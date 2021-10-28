@@ -7,7 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -27,6 +26,7 @@ public class CardTest {
         options.addArguments("--no-sandbox");
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
+        driver.get("http://localhost:9999/");
     }
 
     @AfterEach
@@ -37,7 +37,6 @@ public class CardTest {
 
     @Test
     void shouldTest() {
-        driver.get("http://localhost:9999/");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Ягами Лайт");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+72341234562");
         driver.findElement(By.cssSelector(".checkbox__box")).click();
@@ -50,7 +49,6 @@ public class CardTest {
 
     @Test
     void shouldNotName() {
-        driver.get("http://localhost:9999/");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Light -");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+72341234562");
         driver.findElement(By.cssSelector(".checkbox__box")).click();
@@ -63,7 +61,6 @@ public class CardTest {
 
     @Test
     void shouldNotPhone() {
-        driver.get("http://localhost:9999/");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Ягами Лайт");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+7234123456");
         driver.findElement(By.cssSelector(".checkbox__box")).click();
@@ -76,7 +73,6 @@ public class CardTest {
 
     @Test
     void shouldNotCheckbox() {
-        driver.get("http://localhost:9999/");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Ягами Лайт");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+72341234568");
         driver.findElement(By.cssSelector(".button__text")).click();
