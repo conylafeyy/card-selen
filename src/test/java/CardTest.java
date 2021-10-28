@@ -25,9 +25,6 @@ public class CardTest {
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
         options.addArguments("--headless");
-        options.addArguments("start-maximized");
-        options.addArguments("disable-infobars");
-        options.addArguments("--disable-dev-shm-usage");
         driver = new ChromeDriver(options);
         driver.get("http://localhost:9999/");
     }
