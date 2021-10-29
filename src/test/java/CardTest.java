@@ -41,7 +41,7 @@ public class CardTest {
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+72341234562");
         driver.findElement(By.cssSelector(".checkbox__box")).click();
         driver.findElement(By.cssSelector(".button__text")).click();
-        String actualMessage = driver.findElement(By.cssSelector(".paragraph.paragraph_theme_alfa-on-white")).getText().trim();
+        String actualMessage = driver.findElement(By.cssSelector("[data-test-id=order-success]")).getText().trim();
         String expectedMessage = "Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
 
         assertEquals(expectedMessage, actualMessage);
@@ -76,8 +76,17 @@ public class CardTest {
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Ягами Лайт");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+72341234568");
         driver.findElement(By.cssSelector(".button__text")).click();
-        String actualMessage = driver.findElement(By.cssSelector(".input_invalid")).getCssValue("color");
-        String expectedMessage = "rgba(255, 92, 92, 1)";
+        boolean actualMessage = driver.findElement(By.cssSelector(".input_invalid")).isDisplayed();
+        boolean expectedMessage = true;
+
+        assertEquals(expectedMessage, actualMessage);
+    };
+
+    @Test
+    void shouldEmpty() {
+        driver.findElement(By.cssSelector(".button__text")).click();
+        String actualMessage = driver.findElement(By.cssSelector("[data-test-id=name] .input__sub")).getText().trim();
+        String expectedMessage = "Поле обязательно для заполнения";
 
         assertEquals(expectedMessage, actualMessage);
     };
