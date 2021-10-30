@@ -90,4 +90,14 @@ public class CardTest {
 
         assertEquals(expectedMessage, actualMessage);
     };
+
+    @Test
+    void shouldEmptyPhone() {
+        driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Ягами Лайт");
+        driver.findElement(By.cssSelector(".button__text")).click();
+        String actualMessage = driver.findElement(By.cssSelector("[data-test-id=phone] .input__sub")).getText().trim();
+        String expectedMessage = "Поле обязательно для заполнения";
+
+        assertEquals(expectedMessage, actualMessage);
+    };
 }
